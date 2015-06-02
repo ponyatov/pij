@@ -1,6 +1,8 @@
 #!/usr/bin/octave -qf
 % 2D version of old Alex Pijakov calc
 
+StartTime=time();
+
 % starting conditions:
 
 %% Q/m, 1..300 K/kg
@@ -29,7 +31,10 @@ Vz=V*cos(Alpha)
 %% current time, s
 T=0;
 %%% calc time step, s
-dT=1e-6;
+dT=5e-8;
+%   4e-8 4.7s
+%   5e-8 3.5s
+% 10e-8 2.1s
 
 % %%%%%%%%%%%%%%%
 
@@ -68,7 +73,7 @@ subplot(2,1,1); hold on; grid on;
 %% Fi[]
 x = 1:length(Fi(1,:));
 title(sprintf('Tube field distribution Fi[%ix%i]',n,m));
-xlabel("Z, mm"); ylabel("kilo popugaev");
+xlabel("Z,mm"); ylabel("nanopopugaev");
 for i = 1:size(Fi)(1)
 	plot(x,Fi(i,:),'b');
 end
@@ -78,11 +83,11 @@ end
 Pz=Pr=[];
 do
 	% Fi[] indexes
-	X=1+10-int32(R*1000); % Fr
-	Y=1+mod( int32(Z*1000) , m-1) ; % Fz
+	Fr=1+10-int32(R*1000);
+	Fz=1+mod( int32(Z*1000) , m-1);
 	% electric field
-	Er=-1*(Fi(X,Y)-Fi(X+1,Y))*8000/0.001;
-	Ez=(Fi(X,Y)-Fi(X,Y+1))*8000/0.001;
+	Er=-1*(Fi(Fr,Fz)-Fi(Fr+1,Fz))*8000/0.001;
+	Ez=(Fi(Fr,Fz)-Fi(Fr,Fz+1))*8000/0.001;
 	% coords
 	R+=Vr*dT+Er*Qm*dT*dT/2;
 	Z+=Vz*dT+Ez*Qm*dT*dT/2;
@@ -100,4 +105,8 @@ subplot(2,1,2); hold on; grid on;
 xlabel("Z,mm"); ylabel("R,mm");
 plot(Pz,Pr);
 
-print -dpng Fi.png
+print -dpng -r300 Fi.png
+
+EndTime=time();
+ExecTime=EndTime-StartTime;
+printf("ExecTime=%.1f sec\n",ExecTime);
