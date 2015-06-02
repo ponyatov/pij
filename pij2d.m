@@ -76,11 +76,10 @@ end
 % calc section
 
 Pz=Pr=[];
-Zmax=0.090;
 do
 	% Fi[] indexes
 	X=1+10-int32(R*1000); % Fr
-	Y=1+int32(Z*1000); % Fz
+	Y=1+mod( int32(Z*1000) , m-1) ; % Fz
 	% electric field
 	Er=-1*(Fi(X,Y)-Fi(X+1,Y))*8000/0.001;
 	Ez=(Fi(X,Y)-Fi(X,Y+1))*8000/0.001;
@@ -93,7 +92,7 @@ do
 	% next time tick
 	T+=dT;
 	% plot Z/r
-	Pz = [Pz Z];
+	Pz = [Pz Z*1000];
 	Pr = [Pr R*1000];
 until R>=Rmax | Z>Zmax
 
@@ -101,4 +100,4 @@ subplot(2,1,2); hold on; grid on;
 xlabel("Z,mm"); ylabel("R,mm");
 plot(Pz,Pr);
 
-%print -dpng Fi.png
+print -dpng Fi.png
