@@ -29,7 +29,7 @@ Vz=V*cos(Alpha)
 %% current time, s
 T=0;
 %%% calc time step, s
-dT=1e-3;%1e-6;
+dT=1e-6;
 
 % %%%%%%%%%%%%%%%
 
@@ -75,22 +75,30 @@ end
 
 % calc section
 
+Pz=Pr=[];
+Zmax=0.090;
 do
 	% Fi[] indexes
-	X=1+10-int32(R*1000) % Fr
-	Y=1+mod( int32(Z0*1000) , m) % Fz
+	X=1+10-int32(R*1000); % Fr
+	Y=1+int32(Z*1000); % Fz
 	% electric field
-	Er=-1*(Fi(X,Y)-Fi(X+1,Y))*8000/0.001
-	Ez=(Fi(X,Y)-Fi(X,Y+1))*8000/0.001
+	Er=-1*(Fi(X,Y)-Fi(X+1,Y))*8000/0.001;
+	Ez=(Fi(X,Y)-Fi(X,Y+1))*8000/0.001;
 	% coords
 	R+=Vr*dT+Er*Qm*dT*dT/2;
-	Z+=Vz*dT+Ez*Qm*dT*dT/2
+	Z+=Vz*dT+Ez*Qm*dT*dT/2;
 	% velocity
-	Vr+=Er*Qm*dT
-	Vz+=Ez*Qm*dT	
+	Vr+=Er*Qm*dT;
+	Vz+=Ez*Qm*dT;
 	% next time tick
 	T+=dT;
-	NN+=1
+	% plot Z/r
+	Pz = [Pz Z];
+	Pr = [Pr R*1000];
 until R>=Rmax | Z>Zmax
+
+subplot(2,1,2); hold on; grid on;
+xlabel("Z,mm"); ylabel("R,mm");
+plot(Pz,Pr);
 
 %print -dpng Fi.png
