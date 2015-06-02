@@ -13,8 +13,8 @@ DatFile = 'Trajectory2D_pas/Fi.dat'
 fhDatFile = fopen(DatFile,'rb') ; assert(fhDatFile != 0);
 %% read header: data sizes
 [tmp,readed] = fread(fhDatFile,2,'float64') ; assert(readed==2);
-a=tmp(1) ; n=round(a)
-b=tmp(2) ; m=round(b)
+a=tmp(1) ; n=round(a)+1
+b=tmp(2) ; m=round(b)+1
 % read Fi[]
 Fi=[];
 for i = 1:n
@@ -28,7 +28,14 @@ fclose(fhDatFile);
 te=fopen("3.txt",'wb'); assert(te!=0); fclose(te);
 
 % plot series
-R=Fi(1,:);
-for i = 1:length(R)
-	plot(i,R(i))
+x = 1:length(Fi(1,:));
+clf; hold on; grid on;
+subplot(2,1,1); hold on;
+title(sprintf('Tube field distribution Fi[%ix%i]',n,m));
+xlabel("Z, mm"); ylabel("kilo popugaev");
+for i = 1:size(Fi)(1)
+	plot(x,Fi(i,:),'b');
 end
+print -dpng Fi.png
+
+

@@ -58,30 +58,31 @@ begin
 /////////// rewrite(te);
 /////////// closefile(te);
 
-For i:=0 to m do
-Form1.Series1.AddXY(i,Fi[1,i]);
-For i:=0 to m do
-Form1.Series2.AddXY(i,Fi[2,i]);
-For i:=0 to m do
-Form1.Series3.AddXY(i,Fi[3,i]);
-For i:=0 to m do
-Form1.Series4.AddXY(i,Fi[4,i]);
-For i:=0 to m do
-Form1.Series5.AddXY(i,Fi[5,i]);
-For i:=0 to m do
-Form1.Series6.AddXY(i,Fi[6,i]);
-For i:=0 to m do
-Form1.Series7.AddXY(i,Fi[7,i]);
-For i:=0 to m do
-Form1.Series8.AddXY(i,Fi[8,i]);
-For i:=0 to m do
-Form1.Series9.AddXY(i,Fi[9,i]);
-For i:=0 to m do
-Form1.Series11.AddXY(i,Fi[10,i]);
-For i:=0 to m do
-Form1.Series10.AddXY(i,Fi[11,i]);
-Form1.Chart1.UndoZoom;
-Form1.Chart1.ZoomPercent(95);
+/////////// For i:=0 to m do
+/////////// Form1.Series1.AddXY(i,Fi[1,i]);
+/////////// For i:=0 to m do
+/////////// Form1.Series2.AddXY(i,Fi[2,i]);
+/////////// For i:=0 to m do
+/////////// Form1.Series3.AddXY(i,Fi[3,i]);
+/////////// For i:=0 to m do
+/////////// Form1.Series4.AddXY(i,Fi[4,i]);
+/////////// For i:=0 to m do
+/////////// Form1.Series5.AddXY(i,Fi[5,i]);
+/////////// For i:=0 to m do
+/////////// Form1.Series6.AddXY(i,Fi[6,i]);
+/////////// For i:=0 to m do
+/////////// Form1.Series7.AddXY(i,Fi[7,i]);
+/////////// For i:=0 to m do
+/////////// Form1.Series8.AddXY(i,Fi[8,i]);
+/////////// For i:=0 to m do
+/////////// Form1.Series9.AddXY(i,Fi[9,i]);
+/////////// For i:=0 to m do
+/////////// Form1.Series11.AddXY(i,Fi[10,i]);
+/////////// For i:=0 to m do
+/////////// Form1.Series10.AddXY(i,Fi[11,i]);
+/////////// Form1.Chart1.UndoZoom;
+/////////// Form1.Chart1.ZoomPercent(95);
+
 V:=1000;
 Qm:=StrToFloat(Form1.Edit1.Text);
 Alpha:=0;
