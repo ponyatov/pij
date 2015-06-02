@@ -1,6 +1,40 @@
 #!/usr/bin/octave -qf
 % 2D version of old Alex Pijakov calc
 
+% starting conditions:
+
+%% Q/m, 1..300 K/kg
+Qm=10 % input("Qm")
+
+%% input angle, 0.00..0.01 deg
+Alpha=0 % input("alpha")
+Amin=0.00
+Amax=0.01
+
+%% input radius, (0..9)e-3 m (0..9mm)
+R=0e-3 % input("r,mm")/1000
+Rmin=0e-3
+Rmax=9e-3
+
+%% Z coordinate, m
+Z=0;
+Zmax=2.54;
+
+%% linear speed, m/s
+V=1000
+%%% speed vector parts
+Vr=V*sin(Alpha)
+Vz=V*cos(Alpha)
+
+%% current time, s
+T=0;
+%%% calc time step, s
+dT=1e-6;
+
+% %%%%%%%%%%%%%%%
+
+
+
 % arguments from cmdline
 arg = argv()
 
@@ -28,14 +62,20 @@ fclose(fhDatFile);
 te=fopen("3.txt",'wb'); assert(te!=0); fclose(te);
 
 % plot series
+clf;
+subplot(2,1,1); hold on; grid on;
+
+%% Fi[]
 x = 1:length(Fi(1,:));
-clf; hold on; grid on;
-subplot(2,1,1); hold on;
 title(sprintf('Tube field distribution Fi[%ix%i]',n,m));
 xlabel("Z, mm"); ylabel("kilo popugaev");
 for i = 1:size(Fi)(1)
 	plot(x,Fi(i,:),'b');
 end
-print -dpng Fi.png
 
+% calc section
 
+do
+until Z>Zmax | R>=Rmax
+
+%print -dpng Fi.png
