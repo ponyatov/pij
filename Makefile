@@ -2,7 +2,7 @@ CFLAGS =
 
 .PHONY: pij
 pij: pij2d.m Trajectory2D_pas/Fi.dat
-	octave -qf pij2d.m Trajectory2D_pas/Fi.dat
+	./$< Trajectory2D_pas/Fi.dat
 
 .PHONY: oct
 oct: Fi_dat.m
