@@ -24,4 +24,11 @@ end
 %% close Fi.dat
 fclose(fhDatFile);
 
+% create 3.txt
+te=fopen("3.txt",'wb'); assert(te!=0); fclose(te);
 
+% plot series
+R=Fi(1,:);
+for i = 1:length(R)
+	plot(i,R(i))
+end
