@@ -33,7 +33,7 @@ int main(int argc, char *argv[]) {
 	for (int i = 0; i < n; i++) {
 		for (int j = 0; j < m; j++) {
 			assert(fread(&f, 1, sizeof(f), img) == sizeof(f));
-			printf("\t%+.7e", f);
+			printf("%f ", f);
 		}
 		printf(";\n");
 	}

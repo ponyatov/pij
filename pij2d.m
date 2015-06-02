@@ -16,7 +16,11 @@ fhDatFile = fopen(DatFile,'rb') ; assert(fhDatFile != 0);
 a=tmp(1) ; n=round(a)
 b=tmp(2) ; m=round(b)
 % read Fi[]
-[Fi,readed] = fread(fhDatFile,n*m,'float64') ; assert(readed==n*m); readed
+Fi=[];
+for i = 1:n
+	[Fi_line,readed]=fread(fhDatFile,m,'float64') ; assert(readed==m);
+	Fi = [ Fi ; rot90(Fi_line) ];
+end
 %% close Fi.dat
 fclose(fhDatFile);
 
