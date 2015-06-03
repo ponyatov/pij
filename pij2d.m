@@ -66,20 +66,21 @@ end
 %% close Fi.dat
 fclose(fhDatFile);
 
-% create 3.txt
-te=fopen("3.txt",'wb'); assert(te!=0); fclose(te);
+%% create 3.txt
+%te=fopen("3.txt",'wb'); assert(te!=0); fclose(te);
 
-% plot series
-clf;
-subplot(2,1,1); hold on; grid on;
+%% plot series
+%clf;
+%subplot(2,1,1); hold on; grid on;
 
 %% Fi[]
-x = 1:length(Fi(1,:));
-title(sprintf('Tube field distribution Fi[%ix%i]',n,m));
-xlabel("Z,mm"); ylabel("nanopopugaev");
-for i = 1:size(Fi)(1)
-	plot(x,Fi(i,:),'b');
-end
+%x = 1:length(Fi(1,:));
+%title(sprintf('Tube field distribution Fi[%ix%i]',n,m));
+%xlabel("Z,mm"); ylabel("nanopopugaev");
+%for i = 1:size(Fi)(1)
+%	plot(x,Fi(i,:),'b');
+%end
+save Fi.man Fi
 
 % calc section
 
@@ -104,11 +105,12 @@ do
 	Pr = [Pr R*1000];
 until R>=Rmax | Z>Zmax
 
-subplot(2,1,2); hold on; grid on;
-xlabel("Z,mm"); ylabel("R,mm");
-plot(Pz,Pr);
+%subplot(2,1,2); hold on; grid on;
+%xlabel("Z,mm"); ylabel("R,mm");
+%plot(Pz,Pr);
+%print -dpng -r300 Fi.png
 
-print -dpng -r300 Fi.png
+T=[Pz Pr] ; save PzPr.man T;
 
 EndTime=time();
 ExecTime=EndTime-StartTime;
