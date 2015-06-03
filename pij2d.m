@@ -28,6 +28,9 @@ V=1000
 Vr=V*sin(Alpha)
 Vz=V*cos(Alpha)
 
+%% acceleration potential
+Uacc=8000;
+
 %% current time, s
 T=0;
 %%% calc time step, s
@@ -86,11 +89,11 @@ do
 	Fr=1+10-int32(R*1000);
 	Fz=1+mod( int32(Z*1000) , m-1);
 	% electric field
-	Er=-1*(Fi(Fr,Fz)-Fi(Fr+1,Fz))*8000/0.001;
-	Ez=(Fi(Fr,Fz)-Fi(Fr,Fz+1))*8000/0.001;
+	Er=-1*(Fi(Fr,Fz)-Fi(Fr+1,Fz))*Uacc/0.001;
+	Ez=(Fi(Fr,Fz)-Fi(Fr,Fz+1))*Uacc/0.001;
 	% coords
-	R+=Vr*dT+Er*Qm*dT*dT/2;
-	Z+=Vz*dT+Ez*Qm*dT*dT/2;
+	R+=Vr*dT+Er*Qm*dT^2/2;
+	Z+=Vz*dT+Ez*Qm*dT^2/2;
 	% velocity
 	Vr+=Er*Qm*dT;
 	Vz+=Ez*Qm*dT;
