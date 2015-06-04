@@ -39,6 +39,9 @@ dT=5e-8;
 %   5e-8 3.5s
 % 10e-8 2.1s
 
+% Fi[] step, m
+RZstep=1e-3
+
 % %%%%%%%%%%%%%%%
 
 
@@ -80,8 +83,8 @@ do
 	Fr=1+10-int32(R*1000);
 	Fz=1+mod( int32(Z*1000) , m-1);
 	% electric field
-	Er=-1*(Fi(Fr,Fz)-Fi(Fr+1,Fz))*Uacc/0.001;
-	Ez=(Fi(Fr,Fz)-Fi(Fr,Fz+1))*Uacc/0.001;
+	Er=-1*(Fi(Fr,Fz)-Fi(Fr+1,Fz))*Uacc/RZstep;
+	Ez=(Fi(Fr,Fz)-Fi(Fr,Fz+1))*Uacc/RZstep;
 	% coords
 	R+=Vr*dT+Er*Qm*dT^2/2;
 	Z+=Vz*dT+Ez*Qm*dT^2/2;
@@ -97,7 +100,7 @@ until R>=Rmax | Z>Zmax
 
 subplot(2,1,2); hold on; grid on;
 xlabel("Z,mm"); ylabel("R,mm");
-plot(Pz,Pr);
+plot(Pz,Pr,'r');
 %print -dpng -r300 Fi.png
 
 %T=[Pz Pr] ; save PzPr.mat T;
@@ -105,3 +108,6 @@ plot(Pz,Pr);
 EndTime=time();
 ExecTime=EndTime-StartTime;
 printf("ExecTime=%.1f sec\n",ExecTime);
+
+
+field
