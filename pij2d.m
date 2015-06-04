@@ -1,8 +1,6 @@
 #!/usr/bin/octave -qf
 % 2D version of old Alex Pijakov calc
 
-StartTime=time();
-
 % starting conditions:
 
 %% Q/m, 1..300 K/kg
@@ -42,6 +40,8 @@ dT=5e-8
 % Fi[] step, m
 RZstep=1e-3
 
+epsilon_dR=2.7e-7
+
 % %%%%%%%%%%%%%%%
 
 
@@ -64,7 +64,9 @@ m_cols
 % plot series
 clf;
 
-subplot(2,1,1); hold on; grid on;
+MaxPlot=3;
+
+subplot(MaxPlot,1,1); hold on; grid on;
 
 % Fi[]
 x = 1:m_cols;
@@ -77,22 +79,22 @@ end
 
 % calc section
 
-PlotZ=PlotR=[];
+PlotT=PlotV=PlotZ=PlotR=[];
+StartTime=time();
 do
 	% Fi[] indexes
 	Fr=1+10-int32(abs(R)*1000);
-	Fz=1+mod( int32(Z*1000) , m-1);
+	Fz=1+mod( int32(abs(Z)*1000) , m-1);
 	%% electric field
-	%% erorr (?)
-	%Erp=-1*(Fi(Fr,Fz)-Fi(Fr+1,Fz))*Uacc/RZstep;
-	%Erz=-1*(Fi(Fr-1,Fz)-Fi(Fr,Fz))*Uacc/RZstep;
-	%Er=Erp+Erz;
-	Er=-1*(Fi(Fr,Fz)-Fi(Fr+1,Fz))*Uacc/RZstep;
-	% Ez
-	Ez=(Fi(Fr,Fz)-Fi(Fr,Fz+1))*Uacc/RZstep;
+	dFr=(Fi(Fr,Fz)-Fi(Fr+1,Fz)); 
+	Er=-1*dFr*Uacc/RZstep;
+	dFz=(Fi(Fr,Fz)-Fi(Fr,Fz+1));
+	Ez=dFz*Uacc/RZstep;
 	% coords
-	R+=Vr*dT+Er*Qm*dT^2/2;
-	Z+=Vz*dT+Ez*Qm*dT^2/2;
+	dR=Vr*dT+Er*Qm*dT^2/2; if abs(dR)<epsilon_dR dR=0; end
+	R+=dR;
+	dZ=Vz*dT+Ez*Qm*dT^2/2;
+	Z+=dZ;
 	% velocity
 	Vr+=Er*Qm*dT;
 	Vz+=Ez*Qm*dT;
@@ -101,15 +103,22 @@ do
 	% add to plot data r(z)
 	PlotZ = [PlotZ Z*1000];
 	PlotR = [PlotR R*1000];
+	PlotV = [PlotV dZ/dT];
+	PlotT = [PlotT T];
 until R>=Rmax | Z>Zmax
-
-subplot(2,1,2); hold on; grid on;
-xlabel("Z,mm"); ylabel("R,mm");
-plot(PlotZ,PlotR,'r');
-%print -dpng -r300 Fi.png
-
-%T=[Pz Pr] ; save PzPr.mat T;
-
 EndTime=time();
 ExecTime=EndTime-StartTime;
 printf("ExecTime=%.1f sec\n",ExecTime);
+
+subplot(MaxPlot,1,2); hold on; grid on;
+xlabel("Z,mm"); ylabel("R,mm");
+plot(PlotZ,PlotR,'r');
+
+subplot(MaxPlot,1,3); hold on; grid on;
+xlabel("T,s"); ylabel("Vz,m/s");
+plot(PlotT,PlotV,'g');
+
+%T=[Pz Pr] ; save PzPr.mat T;
+
+print -dpng -r300 Fi.png
+%print -dsvg Fi.svg
