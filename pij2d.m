@@ -10,13 +10,13 @@ Qm=10 % input("Qm")
 
 %% input angle, 0.00..0.01 deg
 Alpha=0 % input("alpha")
-Amin=0.00
-Amax=0.01
+Amin=0.00;
+Amax=0.01;
 
 %% input radius, (0..9)e-3 m (0..9mm)
 R=0e-3 % input("r,mm")/1000
-Rmin=0e-3
-Rmax=9e-3
+Rmin=0e-3;
+Rmax=9e-3;
 
 %% Z coordinate, m
 Z=0;
@@ -25,16 +25,16 @@ Zmax=2.54;
 %% linear speed, m/s
 V=1000
 %%% speed vector parts
-Vr=V*sin(Alpha)
-Vz=V*cos(Alpha)
+Vr=V*sin(Alpha);
+Vz=V*cos(Alpha);
 
 %% acceleration potential
-Uacc=8000;
+Uacc=8000
 
 %% current time, s
 T=0;
 %%% calc time step, s
-dT=5e-8;
+dT=5e-8
 %   4e-8 4.7s
 %   5e-8 3.5s
 % 10e-8 2.1s
