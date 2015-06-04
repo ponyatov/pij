@@ -77,13 +77,18 @@ end
 
 % calc section
 
-Pz=Pr=[];
+PlotZ=PlotR=[];
 do
 	% Fi[] indexes
-	Fr=1+10-int32(R*1000);
+	Fr=1+10-int32(abs(R)*1000);
 	Fz=1+mod( int32(Z*1000) , m-1);
-	% electric field
+	%% electric field
+	%% erorr (?)
+	%Erp=-1*(Fi(Fr,Fz)-Fi(Fr+1,Fz))*Uacc/RZstep;
+	%Erz=-1*(Fi(Fr-1,Fz)-Fi(Fr,Fz))*Uacc/RZstep;
+	%Er=Erp+Erz;
 	Er=-1*(Fi(Fr,Fz)-Fi(Fr+1,Fz))*Uacc/RZstep;
+	% Ez
 	Ez=(Fi(Fr,Fz)-Fi(Fr,Fz+1))*Uacc/RZstep;
 	% coords
 	R+=Vr*dT+Er*Qm*dT^2/2;
@@ -93,14 +98,14 @@ do
 	Vz+=Ez*Qm*dT;
 	% next time tick
 	T+=dT;
-	% plot Z/r
-	Pz = [Pz Z*1000];
-	Pr = [Pr R*1000];
+	% add to plot data r(z)
+	PlotZ = [PlotZ Z*1000];
+	PlotR = [PlotR R*1000];
 until R>=Rmax | Z>Zmax
 
 subplot(2,1,2); hold on; grid on;
 xlabel("Z,mm"); ylabel("R,mm");
-plot(Pz,Pr,'r');
+plot(PlotZ,PlotR,'r');
 %print -dpng -r300 Fi.png
 
 %T=[Pz Pr] ; save PzPr.mat T;
