@@ -47,7 +47,7 @@ RZstep=1e-3
 
 
 % arguments from cmdline
-arg = argv()
+arg = argv();
 
 % DatFile = arg{1}
 % override for run pij2d.m from qtoctave manually
@@ -108,6 +108,3 @@ plot(Pz,Pr,'r');
 EndTime=time();
 ExecTime=EndTime-StartTime;
 printf("ExecTime=%.1f sec\n",ExecTime);
-
-
-field
