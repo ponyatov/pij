@@ -51,23 +51,26 @@ arg = argv()
 DatFile = 'Trajectory2D_pas/Fi.dat'
 
 % reading Fi[] from Fi.dat file
-[n,m,Fi]=Fi_dat(DatFile)
+[n_rows,m_cols,Fi]=Fi_dat(DatFile);
+n_rows
+m_cols
 
 %% create 3.txt
 %te=fopen("3.txt",'wb'); assert(te!=0); fclose(te);
 
-%% plot series
-%clf;
-%subplot(2,1,1); hold on; grid on;
+% plot series
+clf;
 
-%% Fi[]
-%x = 1:length(Fi(1,:));
+subplot(2,1,1); hold on; grid on;
+
+% Fi[]
+x = 1:m_cols;
 %title(sprintf('Tube field distribution Fi[%ix%i]',n,m));
-%xlabel("Z,mm"); ylabel("nanopopugaev");
-%for i = 1:size(Fi)(1)
-%	plot(x,Fi(i,:),'b');
-%end
-save Fi.man Fi
+xlabel("Z,mm"); ylabel("nanopopugaev");
+for i = 1:n_rows
+	plot(x,Fi(i,:),'b');
+end
+%save Fi.mat Fi
 
 % calc section
 
@@ -92,12 +95,12 @@ do
 	Pr = [Pr R*1000];
 until R>=Rmax | Z>Zmax
 
-%subplot(2,1,2); hold on; grid on;
-%xlabel("Z,mm"); ylabel("R,mm");
-%plot(Pz,Pr);
+subplot(2,1,2); hold on; grid on;
+xlabel("Z,mm"); ylabel("R,mm");
+plot(Pz,Pr);
 %print -dpng -r300 Fi.png
 
-T=[Pz Pr] ; save PzPr.man T;
+%T=[Pz Pr] ; save PzPr.mat T;
 
 EndTime=time();
 ExecTime=EndTime-StartTime;
