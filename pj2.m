@@ -1,8 +1,8 @@
 % 2D Piyakov's function
 
-function p = pj2(Fi,Qm,Alpha,R,Rmax,Zmax,Uacc,RZstep,V,dT)
+function p = pj2(Fi,Qm,Alpha,R,Rmax,Zmax,Uacc,RZstep,V,dT,epsilon_dR)
 % numerical calc noise filler config
-epsilon_dR=5.6e-6;
+%epsilon_dR=1e-1;
 	p.epsilon=epsilon_dR;
 
 	% main parameters
@@ -46,7 +46,7 @@ do
 	p.PlotV = [p.PlotV dZ/dT];
 	p.PlotT = [p.PlotT T];
 	p.PlotF = [p.PlotF Fi(Fr,Fz)];
-until R>=Rmax | Z>Zmax
+until abs(R)>=Rmax | Z>Zmax
 EndTime=time();
 p.ExecTime=EndTime-StartTime;
 
