@@ -1,6 +1,6 @@
 % read potential field from Piyakov's .dat file
 
-function [n_rows,m_cols,Fi] = Fi_dat(DatFile)
+function Fi = Fi_dat(DatFile)
 	
 %% open file
 fhDatFile = fopen(DatFile,'rb') ; assert(fhDatFile != 0);
