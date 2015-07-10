@@ -64,8 +64,9 @@
       <Property name="TimeKeeper" id="263.TimeKeeper" number_of_elements="1">
         <Proxy value="257"/>
       </Property>
-      <Property name="ViewModules" id="263.ViewModules" number_of_elements="1">
+      <Property name="ViewModules" id="263.ViewModules" number_of_elements="2">
         <Proxy value="1811"/>
+        <Proxy value="4007"/>
         <Domain name="groups" id="263.ViewModules.groups"/>
       </Property>
     </Proxy>
@@ -112,8 +113,10 @@
       </Property>
     </Proxy>
     <Proxy group="misc" type="ViewLayout" id="1808" servers="16">
-      <Layout number_of_elements="1">
+      <Layout number_of_elements="3">
+        <Item direction="2" fraction="0.5" view="0"/>
         <Item direction="0" fraction="0.5" view="1811"/>
+        <Item direction="0" fraction="0.5" view="4007"/>
       </Layout>
     </Proxy>
     <Proxy group="lookup_tables" type="PVLookupTable" id="3815" servers="21">
@@ -281,6 +284,29 @@
     <Proxy group="misc" type="RepresentationAnimationHelper" id="3840" servers="16">
       <Property name="Source" id="3840.Source" number_of_elements="1">
         <Proxy value="3825"/>
+      </Property>
+    </Proxy>
+    <Proxy group="misc" type="RepresentationAnimationHelper" id="3983" servers="16">
+      <Property name="Source" id="3983.Source" number_of_elements="1">
+        <Proxy value="3939"/>
+      </Property>
+    </Proxy>
+    <Proxy group="extended_sources" type="HighResLineSource" id="3972" servers="1">
+      <Property name="Point1" id="3972.Point1" number_of_elements="3">
+        <Element index="0" value="0"/>
+        <Element index="1" value="0"/>
+        <Element index="2" value="0"/>
+        <Domain name="range" id="3972.Point1.range"/>
+      </Property>
+      <Property name="Point2" id="3972.Point2" number_of_elements="3">
+        <Element index="0" value="0"/>
+        <Element index="1" value="0"/>
+        <Element index="2" value="11"/>
+        <Domain name="range" id="3972.Point2.range"/>
+      </Property>
+      <Property name="Resolution" id="3972.Resolution" number_of_elements="1">
+        <Element index="0" value="100"/>
+        <Domain name="range" id="3972.Resolution.range"/>
       </Property>
     </Proxy>
     <Proxy group="representations" type="UnstructuredGridRepresentation" id="3517" servers="21">
@@ -1488,9 +1514,311 @@
         <Element index="15" value="1"/>
       </Property>
     </Proxy>
+    <Proxy group="representations" type="XYChartRepresentation" id="4008" servers="21">
+      <Property name="AttributeType" id="4008.AttributeType" number_of_elements="1">
+        <Element index="0" value="0"/>
+        <Domain name="enum" id="4008.AttributeType.enum">
+          <Entry value="0" text="Point Data"/>
+          <Entry value="1" text="Cell Data"/>
+          <Entry value="4" text="Vertex Data"/>
+          <Entry value="5" text="Edge Data"/>
+          <Entry value="6" text="Row Data"/>
+          <Entry value="2" text="Field Data"/>
+        </Domain>
+      </Property>
+      <Property name="ChartType" id="4008.ChartType" number_of_elements="1">
+        <Element index="0" value="Line"/>
+      </Property>
+      <Property name="CompositeDataSetIndex" id="4008.CompositeDataSetIndex" number_of_elements="1">
+        <Element index="0" value="1"/>
+        <Domain name="tree" id="4008.CompositeDataSetIndex.tree"/>
+      </Property>
+      <Property name="Input" id="4008.Input" number_of_elements="1">
+        <Proxy value="3939" output_port="0"/>
+        <Domain name="input_type" id="4008.Input.input_type"/>
+      </Property>
+      <Property name="SeriesNamesInfo" id="4008.SeriesNamesInfo" number_of_elements="12">
+        <Element index="0" value="ObjectId"/>
+        <Element index="1" value="Points (0)"/>
+        <Element index="2" value="Points (1)"/>
+        <Element index="3" value="Points (2)"/>
+        <Element index="4" value="Points (Magnitude)"/>
+        <Element index="5" value="V (0)"/>
+        <Element index="6" value="V (1)"/>
+        <Element index="7" value="V (2)"/>
+        <Element index="8" value="V (Magnitude)"/>
+        <Element index="9" value="arc_length"/>
+        <Element index="10" value="vtkOriginalIndices"/>
+        <Element index="11" value="vtkValidPointMask"/>
+      </Property>
+      <Property name="UseIndexForXAxis" id="4008.UseIndexForXAxis" number_of_elements="1">
+        <Element index="0" value="0"/>
+        <Domain name="bool" id="4008.UseIndexForXAxis.bool"/>
+      </Property>
+      <Property name="Visibility" id="4008.Visibility" number_of_elements="1">
+        <Element index="0" value="1"/>
+        <Domain name="bool" id="4008.Visibility.bool"/>
+      </Property>
+      <Property name="XArrayName" id="4008.XArrayName" number_of_elements="1">
+        <Element index="0" value="arc_length"/>
+        <Domain name="array_list" id="4008.XArrayName.array_list">
+          <String text="ObjectId"/>
+          <String text="Points (0)"/>
+          <String text="Points (1)"/>
+          <String text="Points (2)"/>
+          <String text="Points (Magnitude)"/>
+          <String text="V (0)"/>
+          <String text="V (1)"/>
+          <String text="V (2)"/>
+          <String text="V (Magnitude)"/>
+          <String text="arc_length"/>
+          <String text="vtkOriginalIndices"/>
+          <String text="vtkValidPointMask"/>
+        </Domain>
+      </Property>
+      <Property name="SeriesColor" id="4008.SeriesColor"/>
+      <Property name="SeriesColorInfo" id="4008.SeriesColorInfo" number_of_elements="48">
+        <Element index="0" value="V (0)"/>
+        <Element index="1" value="0"/>
+        <Element index="2" value="0"/>
+        <Element index="3" value="0"/>
+        <Element index="4" value="V (1)"/>
+        <Element index="5" value="0.894118"/>
+        <Element index="6" value="0.101961"/>
+        <Element index="7" value="0.109804"/>
+        <Element index="8" value="V (2)"/>
+        <Element index="9" value="0.215686"/>
+        <Element index="10" value="0.494118"/>
+        <Element index="11" value="0.721569"/>
+        <Element index="12" value="V (Magnitude)"/>
+        <Element index="13" value="0.301961"/>
+        <Element index="14" value="0.686275"/>
+        <Element index="15" value="0.290196"/>
+        <Element index="16" value="ObjectId"/>
+        <Element index="17" value="0.596078"/>
+        <Element index="18" value="0.305882"/>
+        <Element index="19" value="0.639216"/>
+        <Element index="20" value="vtkValidPointMask"/>
+        <Element index="21" value="1"/>
+        <Element index="22" value="0.498039"/>
+        <Element index="23" value="0"/>
+        <Element index="24" value="arc_length"/>
+        <Element index="25" value="0.65098"/>
+        <Element index="26" value="0.337255"/>
+        <Element index="27" value="0.156863"/>
+        <Element index="28" value="Points (0)"/>
+        <Element index="29" value="0"/>
+        <Element index="30" value="0"/>
+        <Element index="31" value="0"/>
+        <Element index="32" value="Points (1)"/>
+        <Element index="33" value="0.894118"/>
+        <Element index="34" value="0.101961"/>
+        <Element index="35" value="0.109804"/>
+        <Element index="36" value="Points (2)"/>
+        <Element index="37" value="0.215686"/>
+        <Element index="38" value="0.494118"/>
+        <Element index="39" value="0.721569"/>
+        <Element index="40" value="Points (Magnitude)"/>
+        <Element index="41" value="0.301961"/>
+        <Element index="42" value="0.686275"/>
+        <Element index="43" value="0.290196"/>
+        <Element index="44" value="vtkOriginalIndices"/>
+        <Element index="45" value="0.596078"/>
+        <Element index="46" value="0.305882"/>
+        <Element index="47" value="0.639216"/>
+      </Property>
+      <Property name="SeriesLabel" id="4008.SeriesLabel"/>
+      <Property name="SeriesLabelInfo" id="4008.SeriesLabelInfo" number_of_elements="24">
+        <Element index="0" value="V (0)"/>
+        <Element index="1" value="V (0)"/>
+        <Element index="2" value="V (1)"/>
+        <Element index="3" value="V (1)"/>
+        <Element index="4" value="V (2)"/>
+        <Element index="5" value="V (2)"/>
+        <Element index="6" value="V (Magnitude)"/>
+        <Element index="7" value="V (Magnitude)"/>
+        <Element index="8" value="ObjectId"/>
+        <Element index="9" value="ObjectId"/>
+        <Element index="10" value="vtkValidPointMask"/>
+        <Element index="11" value="vtkValidPointMask"/>
+        <Element index="12" value="arc_length"/>
+        <Element index="13" value="arc_length"/>
+        <Element index="14" value="Points (0)"/>
+        <Element index="15" value="Points (0)"/>
+        <Element index="16" value="Points (1)"/>
+        <Element index="17" value="Points (1)"/>
+        <Element index="18" value="Points (2)"/>
+        <Element index="19" value="Points (2)"/>
+        <Element index="20" value="Points (Magnitude)"/>
+        <Element index="21" value="Points (Magnitude)"/>
+        <Element index="22" value="vtkOriginalIndices"/>
+        <Element index="23" value="vtkOriginalIndices"/>
+      </Property>
+      <Property name="SeriesLineStyle" id="4008.SeriesLineStyle"/>
+      <Property name="SeriesLineStyleInfo" id="4008.SeriesLineStyleInfo" number_of_elements="24">
+        <Element index="0" value="V (0)"/>
+        <Element index="1" value="1"/>
+        <Element index="2" value="V (1)"/>
+        <Element index="3" value="1"/>
+        <Element index="4" value="V (2)"/>
+        <Element index="5" value="1"/>
+        <Element index="6" value="V (Magnitude)"/>
+        <Element index="7" value="1"/>
+        <Element index="8" value="ObjectId"/>
+        <Element index="9" value="1"/>
+        <Element index="10" value="vtkValidPointMask"/>
+        <Element index="11" value="1"/>
+        <Element index="12" value="arc_length"/>
+        <Element index="13" value="1"/>
+        <Element index="14" value="Points (0)"/>
+        <Element index="15" value="1"/>
+        <Element index="16" value="Points (1)"/>
+        <Element index="17" value="1"/>
+        <Element index="18" value="Points (2)"/>
+        <Element index="19" value="1"/>
+        <Element index="20" value="Points (Magnitude)"/>
+        <Element index="21" value="1"/>
+        <Element index="22" value="vtkOriginalIndices"/>
+        <Element index="23" value="1"/>
+      </Property>
+      <Property name="SeriesLineThickness" id="4008.SeriesLineThickness" number_of_elements="2">
+        <Element index="0" value="V (Magnitude)"/>
+        <Element index="1" value="7"/>
+      </Property>
+      <Property name="SeriesLineThicknessInfo" id="4008.SeriesLineThicknessInfo" number_of_elements="24">
+        <Element index="0" value="V (0)"/>
+        <Element index="1" value="2"/>
+        <Element index="2" value="V (1)"/>
+        <Element index="3" value="2"/>
+        <Element index="4" value="V (2)"/>
+        <Element index="5" value="2"/>
+        <Element index="6" value="V (Magnitude)"/>
+        <Element index="7" value="7"/>
+        <Element index="8" value="ObjectId"/>
+        <Element index="9" value="2"/>
+        <Element index="10" value="vtkValidPointMask"/>
+        <Element index="11" value="2"/>
+        <Element index="12" value="arc_length"/>
+        <Element index="13" value="2"/>
+        <Element index="14" value="Points (0)"/>
+        <Element index="15" value="2"/>
+        <Element index="16" value="Points (1)"/>
+        <Element index="17" value="2"/>
+        <Element index="18" value="Points (2)"/>
+        <Element index="19" value="2"/>
+        <Element index="20" value="Points (Magnitude)"/>
+        <Element index="21" value="2"/>
+        <Element index="22" value="vtkOriginalIndices"/>
+        <Element index="23" value="2"/>
+      </Property>
+      <Property name="SeriesMarkerStyle" id="4008.SeriesMarkerStyle"/>
+      <Property name="SeriesMarkerStyleInfo" id="4008.SeriesMarkerStyleInfo" number_of_elements="24">
+        <Element index="0" value="V (0)"/>
+        <Element index="1" value="0"/>
+        <Element index="2" value="V (1)"/>
+        <Element index="3" value="0"/>
+        <Element index="4" value="V (2)"/>
+        <Element index="5" value="0"/>
+        <Element index="6" value="V (Magnitude)"/>
+        <Element index="7" value="0"/>
+        <Element index="8" value="ObjectId"/>
+        <Element index="9" value="0"/>
+        <Element index="10" value="vtkValidPointMask"/>
+        <Element index="11" value="0"/>
+        <Element index="12" value="arc_length"/>
+        <Element index="13" value="0"/>
+        <Element index="14" value="Points (0)"/>
+        <Element index="15" value="0"/>
+        <Element index="16" value="Points (1)"/>
+        <Element index="17" value="0"/>
+        <Element index="18" value="Points (2)"/>
+        <Element index="19" value="0"/>
+        <Element index="20" value="Points (Magnitude)"/>
+        <Element index="21" value="0"/>
+        <Element index="22" value="vtkOriginalIndices"/>
+        <Element index="23" value="0"/>
+      </Property>
+      <Property name="SeriesPlotCorner" id="4008.SeriesPlotCorner"/>
+      <Property name="SeriesPlotCornerInfo" id="4008.SeriesPlotCornerInfo" number_of_elements="24">
+        <Element index="0" value="V (0)"/>
+        <Element index="1" value="0"/>
+        <Element index="2" value="V (1)"/>
+        <Element index="3" value="0"/>
+        <Element index="4" value="V (2)"/>
+        <Element index="5" value="0"/>
+        <Element index="6" value="V (Magnitude)"/>
+        <Element index="7" value="0"/>
+        <Element index="8" value="ObjectId"/>
+        <Element index="9" value="0"/>
+        <Element index="10" value="vtkValidPointMask"/>
+        <Element index="11" value="0"/>
+        <Element index="12" value="arc_length"/>
+        <Element index="13" value="0"/>
+        <Element index="14" value="Points (0)"/>
+        <Element index="15" value="0"/>
+        <Element index="16" value="Points (1)"/>
+        <Element index="17" value="0"/>
+        <Element index="18" value="Points (2)"/>
+        <Element index="19" value="0"/>
+        <Element index="20" value="Points (Magnitude)"/>
+        <Element index="21" value="0"/>
+        <Element index="22" value="vtkOriginalIndices"/>
+        <Element index="23" value="0"/>
+      </Property>
+      <Property name="SeriesVisibility" id="4008.SeriesVisibility" number_of_elements="22">
+        <Element index="0" value="ObjectId"/>
+        <Element index="1" value="0"/>
+        <Element index="2" value="Points (0)"/>
+        <Element index="3" value="0"/>
+        <Element index="4" value="Points (1)"/>
+        <Element index="5" value="0"/>
+        <Element index="6" value="Points (2)"/>
+        <Element index="7" value="0"/>
+        <Element index="8" value="Points (Magnitude)"/>
+        <Element index="9" value="0"/>
+        <Element index="10" value="V (0)"/>
+        <Element index="11" value="0"/>
+        <Element index="12" value="V (1)"/>
+        <Element index="13" value="0"/>
+        <Element index="14" value="V (2)"/>
+        <Element index="15" value="0"/>
+        <Element index="16" value="arc_length"/>
+        <Element index="17" value="0"/>
+        <Element index="18" value="vtkOriginalIndices"/>
+        <Element index="19" value="0"/>
+        <Element index="20" value="vtkValidPointMask"/>
+        <Element index="21" value="0"/>
+      </Property>
+      <Property name="SeriesVisibilityInfo" id="4008.SeriesVisibilityInfo" number_of_elements="24">
+        <Element index="0" value="V (0)"/>
+        <Element index="1" value="0"/>
+        <Element index="2" value="V (1)"/>
+        <Element index="3" value="0"/>
+        <Element index="4" value="V (2)"/>
+        <Element index="5" value="0"/>
+        <Element index="6" value="V (Magnitude)"/>
+        <Element index="7" value="1"/>
+        <Element index="8" value="ObjectId"/>
+        <Element index="9" value="0"/>
+        <Element index="10" value="vtkValidPointMask"/>
+        <Element index="11" value="0"/>
+        <Element index="12" value="arc_length"/>
+        <Element index="13" value="0"/>
+        <Element index="14" value="Points (0)"/>
+        <Element index="15" value="0"/>
+        <Element index="16" value="Points (1)"/>
+        <Element index="17" value="0"/>
+        <Element index="18" value="Points (2)"/>
+        <Element index="19" value="0"/>
+        <Element index="20" value="Points (Magnitude)"/>
+        <Element index="21" value="0"/>
+        <Element index="22" value="vtkOriginalIndices"/>
+        <Element index="23" value="0"/>
+      </Property>
+    </Proxy>
     <Proxy group="representations" type="ScalarBarWidgetRepresentation" id="3817" servers="21">
       <Property name="Enabled" id="3817.Enabled" number_of_elements="1">
-        <Element index="0" value="0"/>
+        <Element index="0" value="1"/>
         <Domain name="bool" id="3817.Enabled.bool"/>
       </Property>
       <Property name="UseNonCompositedRenderer" id="3817.UseNonCompositedRenderer" number_of_elements="1">
@@ -1645,7 +1973,7 @@
         <Domain name="bool" id="3817.TitleShadow.bool"/>
       </Property>
       <Property name="Visibility" id="3817.Visibility" number_of_elements="1">
-        <Element index="0" value="0"/>
+        <Element index="0" value="1"/>
         <Domain name="bool" id="3817.Visibility.bool"/>
       </Property>
     </Proxy>
@@ -1705,6 +2033,27 @@
         <Element index="0" value="4250"/>
         <Domain name="range" id="3825.Value.range"/>
         <Domain name="scalar_range" id="3825.Value.scalar_range"/>
+      </Property>
+    </Proxy>
+    <Proxy group="filters" type="ProbeLine" id="3939" servers="1">
+      <Property name="Input" id="3939.Input" number_of_elements="1">
+        <Proxy value="3483" output_port="0"/>
+        <Domain name="groups" id="3939.Input.groups"/>
+        <Domain name="input_array" id="3939.Input.input_array">
+          <InputArray attribute_type="any" number_of_components="0"/>
+        </Domain>
+        <Domain name="input_type" id="3939.Input.input_type"/>
+      </Property>
+      <Property name="PassPartialArrays" id="3939.PassPartialArrays" number_of_elements="1">
+        <Element index="0" value="1"/>
+        <Domain name="bool" id="3939.PassPartialArrays.bool"/>
+      </Property>
+      <Property name="Source" id="3939.Source" number_of_elements="1">
+        <Proxy value="3972" output_port="0"/>
+        <Domain name="groups" id="3939.Source.groups"/>
+        <Domain name="proxy_list" id="3939.Source.proxy_list">
+          <Proxy value="3972"/>
+        </Domain>
       </Property>
     </Proxy>
     <Proxy group="sources" type="ExodusIIReader" id="3483" servers="1">
@@ -1995,13 +2344,15 @@
         <Element index="0" value="0"/>
         <Element index="1" value="1"/>
       </Property>
-      <Property name="TimeSources" id="257.TimeSources" number_of_elements="2">
+      <Property name="TimeSources" id="257.TimeSources" number_of_elements="3">
         <Proxy value="3483"/>
         <Proxy value="3825"/>
+        <Proxy value="3939"/>
       </Property>
       <Property name="TimestepValues" id="257.TimestepValues"/>
-      <Property name="Views" id="257.Views" number_of_elements="1">
+      <Property name="Views" id="257.Views" number_of_elements="2">
         <Proxy value="1811"/>
+        <Proxy value="4007"/>
       </Property>
     </Proxy>
     <Proxy group="views" type="RenderView" id="1811" servers="21">
@@ -2266,7 +2617,7 @@
         <Element index="1" value="0"/>
       </Property>
       <Property name="ViewSize" id="1811.ViewSize" number_of_elements="2">
-        <Element index="0" value="919"/>
+        <Element index="0" value="456"/>
         <Element index="1" value="752"/>
       </Property>
       <Property name="ViewTime" id="1811.ViewTime" number_of_elements="1">
@@ -2274,22 +2625,22 @@
         <Domain name="range" id="1811.ViewTime.range"/>
       </Property>
       <Property name="CameraClippingRange" id="1811.CameraClippingRange" number_of_elements="2">
-        <Element index="0" value="16.5398208253589"/>
-        <Element index="1" value="92.328869237606"/>
+        <Element index="0" value="39.6560407314773"/>
+        <Element index="1" value="68.649553425541"/>
       </Property>
       <Property name="CameraClippingRangeInfo" id="1811.CameraClippingRangeInfo" number_of_elements="2">
-        <Element index="0" value="16.5398208253589"/>
-        <Element index="1" value="92.328869237606"/>
+        <Element index="0" value="39.6560407314773"/>
+        <Element index="1" value="68.649553425541"/>
       </Property>
       <Property name="CameraFocalPoint" id="1811.CameraFocalPoint" number_of_elements="3">
-        <Element index="0" value="0.702887642041961"/>
-        <Element index="1" value="-0.88722923575091"/>
-        <Element index="2" value="-1.35235529430147"/>
+        <Element index="0" value="-0.319383015117548"/>
+        <Element index="1" value="-0.291107723560036"/>
+        <Element index="2" value="-1.69373032850197"/>
       </Property>
       <Property name="CameraFocalPointInfo" id="1811.CameraFocalPointInfo" number_of_elements="3">
-        <Element index="0" value="0.702887642041961"/>
-        <Element index="1" value="-0.88722923575091"/>
-        <Element index="2" value="-1.35235529430147"/>
+        <Element index="0" value="-0.319383015117548"/>
+        <Element index="1" value="-0.291107723560036"/>
+        <Element index="2" value="-1.69373032850197"/>
       </Property>
       <Property name="CameraParallelProjection" id="1811.CameraParallelProjection" number_of_elements="1">
         <Element index="0" value="0"/>
@@ -2302,31 +2653,270 @@
         <Element index="0" value="12.9511157226671"/>
       </Property>
       <Property name="CameraPosition" id="1811.CameraPosition" number_of_elements="3">
-        <Element index="0" value="-34.8925026867508"/>
-        <Element index="1" value="18.395963183288"/>
-        <Element index="2" value="-30.7641740379454"/>
+        <Element index="0" value="-42.0323947435445"/>
+        <Element index="1" value="27.1851357437945"/>
+        <Element index="2" value="1.30778625558315"/>
       </Property>
       <Property name="CameraPositionInfo" id="1811.CameraPositionInfo" number_of_elements="3">
-        <Element index="0" value="-34.8925026867508"/>
-        <Element index="1" value="18.395963183288"/>
-        <Element index="2" value="-30.7641740379454"/>
+        <Element index="0" value="-42.0323947435445"/>
+        <Element index="1" value="27.1851357437945"/>
+        <Element index="2" value="1.30778625558315"/>
       </Property>
       <Property name="CameraViewAngle" id="1811.CameraViewAngle" number_of_elements="1">
         <Element index="0" value="30"/>
       </Property>
       <Property name="CameraViewUp" id="1811.CameraViewUp" number_of_elements="3">
-        <Element index="0" value="-0.502361234836365"/>
-        <Element index="1" value="0.306097453489976"/>
-        <Element index="2" value="0.808664045633683"/>
+        <Element index="0" value="0.0582883970351589"/>
+        <Element index="1" value="-0.0205411776762046"/>
+        <Element index="2" value="0.998088434353763"/>
       </Property>
       <Property name="CameraViewUpInfo" id="1811.CameraViewUpInfo" number_of_elements="3">
-        <Element index="0" value="-0.502361234836365"/>
-        <Element index="1" value="0.306097453489976"/>
-        <Element index="2" value="0.808664045633683"/>
+        <Element index="0" value="0.0582883970351589"/>
+        <Element index="1" value="-0.0205411776762046"/>
+        <Element index="2" value="0.998088434353763"/>
       </Property>
       <Property name="EyeAngle" id="1811.EyeAngle" number_of_elements="1">
         <Element index="0" value="2"/>
         <Domain name="range" id="1811.EyeAngle.range"/>
+      </Property>
+    </Proxy>
+    <Proxy group="views" type="XYChartView" id="4007" servers="21">
+      <Property name="AxisColor" id="4007.AxisColor" number_of_elements="12">
+        <Element index="0" value="0"/>
+        <Element index="1" value="0"/>
+        <Element index="2" value="0"/>
+        <Element index="3" value="0"/>
+        <Element index="4" value="0"/>
+        <Element index="5" value="0"/>
+        <Element index="6" value="0"/>
+        <Element index="7" value="0"/>
+        <Element index="8" value="0"/>
+        <Element index="9" value="0"/>
+        <Element index="10" value="0"/>
+        <Element index="11" value="0"/>
+        <Domain name="range" id="4007.AxisColor.range"/>
+      </Property>
+      <Property name="AxisGridColor" id="4007.AxisGridColor" number_of_elements="12">
+        <Element index="0" value="0.95"/>
+        <Element index="1" value="0.95"/>
+        <Element index="2" value="0.95"/>
+        <Element index="3" value="0.95"/>
+        <Element index="4" value="0.95"/>
+        <Element index="5" value="0.95"/>
+        <Element index="6" value="0.95"/>
+        <Element index="7" value="0.95"/>
+        <Element index="8" value="0.95"/>
+        <Element index="9" value="0.95"/>
+        <Element index="10" value="0.95"/>
+        <Element index="11" value="0.95"/>
+        <Domain name="range" id="4007.AxisGridColor.range"/>
+      </Property>
+      <Property name="AxisLabelColor" id="4007.AxisLabelColor" number_of_elements="12">
+        <Element index="0" value="0"/>
+        <Element index="1" value="0"/>
+        <Element index="2" value="0"/>
+        <Element index="3" value="0"/>
+        <Element index="4" value="0"/>
+        <Element index="5" value="0"/>
+        <Element index="6" value="0"/>
+        <Element index="7" value="0"/>
+        <Element index="8" value="0"/>
+        <Element index="9" value="0"/>
+        <Element index="10" value="0"/>
+        <Element index="11" value="0"/>
+        <Domain name="range" id="4007.AxisLabelColor.range"/>
+      </Property>
+      <Property name="AxisLabelFont" id="4007.AxisLabelFont" number_of_elements="16">
+        <Element index="0" value="Arial"/>
+        <Element index="1" value="12"/>
+        <Element index="2" value="0"/>
+        <Element index="3" value="0"/>
+        <Element index="4" value="Arial"/>
+        <Element index="5" value="12"/>
+        <Element index="6" value="0"/>
+        <Element index="7" value="0"/>
+        <Element index="8" value="Arial"/>
+        <Element index="9" value="12"/>
+        <Element index="10" value="0"/>
+        <Element index="11" value="0"/>
+        <Element index="12" value="Arial"/>
+        <Element index="13" value="12"/>
+        <Element index="14" value="0"/>
+        <Element index="15" value="0"/>
+      </Property>
+      <Property name="AxisLabelNotation" id="4007.AxisLabelNotation" number_of_elements="4">
+        <Element index="0" value="0"/>
+        <Element index="1" value="0"/>
+        <Element index="2" value="0"/>
+        <Element index="3" value="0"/>
+        <Domain name="range" id="4007.AxisLabelNotation.range"/>
+      </Property>
+      <Property name="AxisLabelPrecision" id="4007.AxisLabelPrecision" number_of_elements="4">
+        <Element index="0" value="2"/>
+        <Element index="1" value="2"/>
+        <Element index="2" value="2"/>
+        <Element index="3" value="2"/>
+        <Domain name="range" id="4007.AxisLabelPrecision.range"/>
+      </Property>
+      <Property name="AxisLogScale" id="4007.AxisLogScale" number_of_elements="4">
+        <Element index="0" value="0"/>
+        <Element index="1" value="0"/>
+        <Element index="2" value="0"/>
+        <Element index="3" value="0"/>
+        <Domain name="bool" id="4007.AxisLogScale.bool"/>
+      </Property>
+      <Property name="AxisTitle" id="4007.AxisTitle" number_of_elements="4">
+        <Element index="0" value=""/>
+        <Element index="1" value=""/>
+        <Element index="2" value=""/>
+        <Element index="3" value=""/>
+      </Property>
+      <Property name="AxisTitleColor" id="4007.AxisTitleColor" number_of_elements="12">
+        <Element index="0" value="0"/>
+        <Element index="1" value="0"/>
+        <Element index="2" value="0"/>
+        <Element index="3" value="0"/>
+        <Element index="4" value="0"/>
+        <Element index="5" value="0"/>
+        <Element index="6" value="0"/>
+        <Element index="7" value="0"/>
+        <Element index="8" value="0.5"/>
+        <Element index="9" value="0"/>
+        <Element index="10" value="0"/>
+        <Element index="11" value="0.5"/>
+        <Domain name="range" id="4007.AxisTitleColor.range"/>
+      </Property>
+      <Property name="AxisTitleFont" id="4007.AxisTitleFont" number_of_elements="16">
+        <Element index="0" value="Arial"/>
+        <Element index="1" value="12"/>
+        <Element index="2" value="1"/>
+        <Element index="3" value="0"/>
+        <Element index="4" value="Arial"/>
+        <Element index="5" value="12"/>
+        <Element index="6" value="1"/>
+        <Element index="7" value="0"/>
+        <Element index="8" value="Arial"/>
+        <Element index="9" value="12"/>
+        <Element index="10" value="1"/>
+        <Element index="11" value="0"/>
+        <Element index="12" value="Arial"/>
+        <Element index="13" value="12"/>
+        <Element index="14" value="1"/>
+        <Element index="15" value="0"/>
+      </Property>
+      <Property name="AxisUseCustomLabels" id="4007.AxisUseCustomLabels" number_of_elements="4">
+        <Element index="0" value="0"/>
+        <Element index="1" value="0"/>
+        <Element index="2" value="0"/>
+        <Element index="3" value="0"/>
+        <Domain name="bool" id="4007.AxisUseCustomLabels.bool"/>
+      </Property>
+      <Property name="AxisUseCustomRange" id="4007.AxisUseCustomRange" number_of_elements="4">
+        <Element index="0" value="0"/>
+        <Element index="1" value="0"/>
+        <Element index="2" value="0"/>
+        <Element index="3" value="0"/>
+        <Domain name="bool" id="4007.AxisUseCustomRange.bool"/>
+      </Property>
+      <Property name="BottomAxisLabels" id="4007.BottomAxisLabels"/>
+      <Property name="BottomAxisRange" id="4007.BottomAxisRange" number_of_elements="2">
+        <Element index="0" value="-0.611562050780849"/>
+        <Element index="1" value="10.5853660759711"/>
+      </Property>
+      <Property name="CacheKey" id="4007.CacheKey" number_of_elements="1">
+        <Element index="0" value="0"/>
+        <Domain name="range" id="4007.CacheKey.range"/>
+      </Property>
+      <Property name="ChartTitle" id="4007.ChartTitle" number_of_elements="1">
+        <Element index="0" value=""/>
+      </Property>
+      <Property name="ChartTitleAlignment" id="4007.ChartTitleAlignment" number_of_elements="1">
+        <Element index="0" value="1"/>
+        <Domain name="range" id="4007.ChartTitleAlignment.range"/>
+      </Property>
+      <Property name="ChartTitleColor" id="4007.ChartTitleColor" number_of_elements="3">
+        <Element index="0" value="0"/>
+        <Element index="1" value="0"/>
+        <Element index="2" value="0"/>
+        <Domain name="range" id="4007.ChartTitleColor.range"/>
+      </Property>
+      <Property name="ChartTitleFont" id="4007.ChartTitleFont" number_of_elements="4">
+        <Element index="0" value="Arial"/>
+        <Element index="1" value="14"/>
+        <Element index="2" value="0"/>
+        <Element index="3" value="0"/>
+      </Property>
+      <Property name="LeftAxisLabels" id="4007.LeftAxisLabels"/>
+      <Property name="LeftAxisRange" id="4007.LeftAxisRange" number_of_elements="2">
+        <Element index="0" value="-0.0812192385530224"/>
+        <Element index="1" value="6.86245648651651"/>
+      </Property>
+      <Property name="LegendLocation" id="4007.LegendLocation" number_of_elements="1">
+        <Element index="0" value="1"/>
+        <Domain name="range" id="4007.LegendLocation.range"/>
+      </Property>
+      <Property name="Representations" id="4007.Representations" number_of_elements="1">
+        <Proxy value="4008"/>
+      </Property>
+      <Property name="RightAxisLabels" id="4007.RightAxisLabels"/>
+      <Property name="RightAxisRange" id="4007.RightAxisRange" number_of_elements="2">
+        <Element index="0" value="-1.6953341678779"/>
+        <Element index="1" value="9.26390970070963"/>
+      </Property>
+      <Property name="ShowAxisGrid" id="4007.ShowAxisGrid" number_of_elements="4">
+        <Element index="0" value="1"/>
+        <Element index="1" value="1"/>
+        <Element index="2" value="0"/>
+        <Element index="3" value="0"/>
+        <Domain name="bool" id="4007.ShowAxisGrid.bool"/>
+      </Property>
+      <Property name="ShowAxisLabels" id="4007.ShowAxisLabels" number_of_elements="4">
+        <Element index="0" value="1"/>
+        <Element index="1" value="1"/>
+        <Element index="2" value="1"/>
+        <Element index="3" value="1"/>
+        <Domain name="bool" id="4007.ShowAxisLabels.bool"/>
+      </Property>
+      <Property name="ShowLegend" id="4007.ShowLegend" number_of_elements="1">
+        <Element index="0" value="1"/>
+        <Domain name="bool" id="4007.ShowLegend.bool"/>
+      </Property>
+      <Property name="TooltipNotation" id="4007.TooltipNotation" number_of_elements="1">
+        <Element index="0" value="0"/>
+        <Domain name="range" id="4007.TooltipNotation.range"/>
+      </Property>
+      <Property name="TooltipPrecision" id="4007.TooltipPrecision" number_of_elements="1">
+        <Element index="0" value="6"/>
+        <Domain name="range" id="4007.TooltipPrecision.range"/>
+      </Property>
+      <Property name="TopAxisLabels" id="4007.TopAxisLabels"/>
+      <Property name="TopAxisRange" id="4007.TopAxisRange" number_of_elements="2">
+        <Element index="0" value="-5.94002540444415"/>
+        <Element index="1" value="4.36874446820882"/>
+      </Property>
+      <Property name="UseCache" id="4007.UseCache" number_of_elements="1">
+        <Element index="0" value="0"/>
+        <Domain name="bool" id="4007.UseCache.bool"/>
+      </Property>
+      <Property name="UseOffscreenRendering" id="4007.UseOffscreenRendering" number_of_elements="1">
+        <Element index="0" value="0"/>
+        <Domain name="bool" id="4007.UseOffscreenRendering.bool"/>
+      </Property>
+      <Property name="UseOffscreenRenderingForScreenshots" id="4007.UseOffscreenRenderingForScreenshots" number_of_elements="1">
+        <Element index="0" value="0"/>
+        <Domain name="bool" id="4007.UseOffscreenRenderingForScreenshots.bool"/>
+      </Property>
+      <Property name="ViewPosition" id="4007.ViewPosition" number_of_elements="2">
+        <Element index="0" value="456"/>
+        <Element index="1" value="0"/>
+      </Property>
+      <Property name="ViewSize" id="4007.ViewSize" number_of_elements="2">
+        <Element index="0" value="456"/>
+        <Element index="1" value="752"/>
+      </Property>
+      <Property name="ViewTime" id="4007.ViewTime" number_of_elements="1">
+        <Element index="0" value="0"/>
+        <Domain name="range" id="4007.ViewTime.range"/>
       </Property>
     </Proxy>
     <ProxyCollection name="animation">
@@ -2352,15 +2942,21 @@
       <Item id="3839" name="ClipFunction"/>
       <Item id="3840" name="RepresentationAnimationHelper"/>
     </ProxyCollection>
+    <ProxyCollection name="pq_helper_proxies.3939">
+      <Item id="3983" name="RepresentationAnimationHelper"/>
+      <Item id="3972" name="Source"/>
+    </ProxyCollection>
     <ProxyCollection name="representations">
       <Item id="3517" name="DataRepresentation1"/>
       <Item id="3844" name="DataRepresentation4"/>
+      <Item id="4008" name="DataRepresentation5"/>
     </ProxyCollection>
     <ProxyCollection name="scalar_bars">
       <Item id="3817" name="ScalarBarWidgetRepresentation1"/>
     </ProxyCollection>
     <ProxyCollection name="sources">
       <Item id="3825" name="Clip2"/>
+      <Item id="3939" name="PlotOverLine1"/>
       <Item id="3483" name="disk_out_ref.ex2"/>
     </ProxyCollection>
     <ProxyCollection name="timekeeper">
@@ -2368,6 +2964,7 @@
     </ProxyCollection>
     <ProxyCollection name="views">
       <Item id="1811" name="RenderView1"/>
+      <Item id="4007" name="XYChartView1"/>
     </ProxyCollection>
     <CustomProxyDefinitions/>
     <Links/>
