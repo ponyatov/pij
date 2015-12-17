@@ -1,2 +1,2 @@
 @start .
-@gvim -p hpp.hpp cpp.cpp Makefile bat.bat
+@gvim -p hpp.hpp cpp.cpp Unit1.pas Makefile bat.bat 1.txt Fi.dat
