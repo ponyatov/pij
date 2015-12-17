@@ -2,9 +2,13 @@
 #define _H_PIJ2D
 
 #include <iostream>
+#include <fstream>
+#include <iomanip>
 #include <cmath>
+#include <cfloat>
 #include <cstdlib>
 #include <cstdio>
 #include <cassert>
+using namespace std;
 
 #endif // _H_PIJ2D
