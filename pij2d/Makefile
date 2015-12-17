@@ -1,4 +1,6 @@
 
+#MPICH2 = C:\MinGW\MPICH2
+
 .PHONY: exec
 exec: Fi.txt
 Fi.txt: ./pij2d$(EXE)
@@ -7,15 +9,13 @@ Fi.txt: ./pij2d$(EXE)
 C = cpp.cpp
 H = hpp.hpp
 CXXFLAGS += -I. -std=gnu++11
-./pij2d$(EXE): $(C) $(H)
+#-I$(MPICH2)/include -L$(MPICH2)/lib
+./pij2d$(EXE): $(C) $(H) Makefile
 	$(CXX) $(CXXFLAGS) -o $@ $(C)
+#	-lmpi
 
 NOW = $(shell date +%Y%m%d%H%M)
 .PHONY: rar
 rar: $(NOW).rar
 $(NOW).rar: test.files Fi.txt
 	rar a -m5 -o- -r $@ @test.files
-#	"./mailsend1.18.exe" \
-#		-smtp smtp.gmail.com -f dponyatov@gmail.com \
-#		-t dponyatov@gmail.com -sub pij2d_$(NOW) \
-#		-attach $(NOW).rar,mime64,a
