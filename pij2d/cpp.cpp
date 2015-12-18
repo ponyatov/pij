@@ -1,28 +1,35 @@
 #include "hpp.hpp"
 
-FILE *f;				// f : file of Real;
+void doit() {
+	/*
+dt:=1E-6;
+t:=0;
+z:=0;
+repeat
+ Z0:=Z;
+ Repeat
+ If Z0*1000>90 then Z0:=Z0-0.090;
+ Until Z0<0.09;
+ Y:=Trunc(Z0*1000);
+ X:=10-Trunc(R*1000);//X:=11;
+ //Ez:=0;
+ Ez:=(Fi[x,y]-Fi[x,y+1])*8000/0.001;
+ Er:=-1*(Fi[x,y]-Fi[x+1,y])*8000/0.001;
+ Z:=Z+Vz*dt+Ez*qm*dt*dt/2;
+ Vz:=Vz+Ez*qm*dt;
+ R:=R+Vr*dt+Er*qm*dt*dt/2;
+ Vr:=Vr+Er*qm*dt;
+ t:=t+dt;
+ append(te);
+ write(te,z:8:6);
+ write(te,' ');
+ writeln(te,r:8:6);
+ closefile(te);
+ Form1.Series12.AddXY(z,r);
 
-#define Fi_X 21
-#define Fi_Y 90
-float Fi[Fi_X+1][Fi_Y+1];	// Fi : Array [0..21,0..90] of real;
-
-// MPI using http://mpitutorial.com/tutorials/mpi-hello-world/
-
-int main(int argc, char *argv[]) {
-//	// start MPI
-//	assert ( MPI_Init(&argc,&argv) == MPI_SUCCESS );
-	// read Fi as billshit Delphi binary data (i386/x32)
-	assert ( f = fopen("Fi.dat","rb") );
-	assert ( fread(Fi,1,sizeof(Fi),f) == sizeof(Fi));
-	fclose(f);
-	// dump Fi as .txt
-	ofstream FiTXT("Fi.txt");
-	FiTXT << setprecision(LDBL_DIG);
-	FiTXT << "x\ty\tFi\n\n";
-	for (auto fx=0; fx <= Fi_X; fx++)
-		for (auto fy=0; fy<= Fi_Y; fy++)
-			FiTXT << fx << "\t" << fy << "\t" << Fi[fx][fy] << "\n";
-	// normal exit with MPI stop
-//	return MPI_Finalize();
-	return 0;
+Application.ProcessMessages;
+until (z>2.54)or(R>=0.0099);
+end;
+*/
 }
+

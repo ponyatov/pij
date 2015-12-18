@@ -8,7 +8,7 @@ exec: Fi.txt
 Fi.txt: ./$(MODULE)$(EXE)
 	./$(MODULE)$(EXE) < Fi.txt > $(MODULE).log
 
-C = lex.yy.c # cpp.cpp
+C = cpp.cpp lex.yy.c
 H = hpp.hpp
 CXXFLAGS += -I. -std=gnu++11
 #-I$(MPICH2)/include -L$(MPICH2)/lib

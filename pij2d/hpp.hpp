@@ -16,4 +16,6 @@
 #include <cassert>
 using namespace std;
 
+extern void doit();
+
 #endif // _H_PIJ2D
