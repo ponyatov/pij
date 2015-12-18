@@ -6,6 +6,10 @@ double Alpha ; // Alpha:=0;
 double r ; // r:=StrToFloat(Form1.Edit3.Text)/1000;
 
 int doit() {
+
+// append(te);
+ofstream te(TE);
+
 double Vz = V*cos(Alpha); // Vz:=V*Cos(Alpha);	
 double Vr = V*sin(Alpha); // Vr:=V*Sin(Alpha);
 /*
@@ -18,9 +22,11 @@ double dt = 1E-6; // dt:=1E-6;
 double t=0; // t:=0;
 double z=0; // z:=0;
 double R=0;
-double Z0=0;
+double Z=0,Z0=0;
 
-int i,j,n,m,X,Y;
+double Ez,Er;
+
+int i,j,n,m,x,y;
 
 do { // repeat
 
@@ -31,30 +37,42 @@ do {					// Repeat
 		Z0=Z0-0.090;	// Z0:=Z0-0.090;
 } while (!(Z0<0.09));	// Until Z0<0.09;
 
-Y = trunc(Z0*1000);		// Y:=Trunc(Z0*1000);
-X = 10-trunc(R*1000);	//  X:=10-Trunc(R*1000);//X:=11;
-
-/* 
-
- Y:=Trunc(Z0*1000);
- X:=10-Trunc(R*1000);//X:=11;
+y = trunc(Z0*1000);		// Y:=Trunc(Z0*1000);
+x = 10-trunc(R*1000);	//  X:=10-Trunc(R*1000);//X:=11;
  //Ez:=0;
- Ez:=(Fi[x,y]-Fi[x,y+1])*8000/0.001;
- Er:=-1*(Fi[x,y]-Fi[x+1,y])*8000/0.001;
- Z:=Z+Vz*dt+Ez*qm*dt*dt/2;
- Vz:=Vz+Ez*qm*dt;
- R:=R+Vr*dt+Er*qm*dt*dt/2;
- Vr:=Vr+Er*qm*dt;
- t:=t+dt;
- append(te);
- write(te,z:8:6);
- write(te,' ');
- writeln(te,r:8:6);
- closefile(te);
- Form1.Series12.AddXY(z,r);
-*/
 
-} while (!((z>2.54)||(R>=0.0099))); // until (z>2.54)or(R>=0.0099);
+// Ez:=(Fi[x,y]-Fi[x,y+1])*8000/0.001;
+Ez = (Fi[x][y]-Fi[x][y+1])*8000/0.001;
+// Er:=-1*(Fi[x,y]-Fi[x+1,y])*8000/0.001;
+Er = -1*(Fi[x][y]-Fi[x+1][y])*8000/0.001;
+
+// Z:=Z+Vz*dt+Ez*qm*dt*dt/2;
+Z =Z+Vz*dt+Ez*Qm*dt*dt/2;
+
+// Vz:=Vz+Ez*qm*dt;
+Vz =Vz+Ez*Qm*dt;
+
+// R:=R+Vr*dt+Er*qm*dt*dt/2;
+R =R+Vr*dt+Er*Qm*dt*dt/2;
+
+// Vr:=Vr+Er*qm*dt;
+Vr =Vr+Er*Qm*dt;
+
+// t:=t+dt;
+t =t+dt;
+
+// write(te,z:8:6);
+te << z;
+// write(te,' ');
+te << " ";
+// writeln(te,r:8:6);
+te << r;
+// closefile(te);
+te << "\n";
+
+} while (!(							// until
+			(z>2.54)||(R>=0.0099)	// (z>2.54)or(R>=0.0099);
+			));  
 
 return 0;
 }

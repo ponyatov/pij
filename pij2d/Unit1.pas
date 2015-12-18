@@ -1,33 +1,4 @@
 
-type
-  TForm1 = class(TForm)
-    Button1: TButton;
-    Chart1: TChart;
-    Series1: TLineSeries;
-    Series2: TLineSeries;
-    Series3: TLineSeries;
-    Series4: TLineSeries;
-    Series5: TLineSeries;
-    Series6: TLineSeries;
-    Series7: TLineSeries;
-    Series8: TLineSeries;
-    Series9: TLineSeries;
-    Series10: TLineSeries;
-    Series11: TLineSeries;
-    Chart2: TChart;
-    Series12: TLineSeries;
-    Edit1: TEdit;
-    Edit2: TEdit;
-    Edit3: TEdit;
-    Label1: TLabel;
-    procedure Button1Click(Sender: TObject);
-  private
-    { Private declarations }
-  public
-    { Public declarations }
-  end;
-
-
 procedure TForm1.Button1Click(Sender: TObject);
 Var
  a,b,z,Z0,r,R0,fr,fz,az,ar,vz,vr,V,alpha,qm,t,dt,Ez,Er,dr : real;
