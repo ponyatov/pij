@@ -16,6 +16,8 @@
 #include <cassert>
 using namespace std;
 
-extern void doit();
+extern int doit();
+
+extern int yylex();
 
 #endif // _H_PIJ2D

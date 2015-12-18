@@ -8,15 +8,16 @@ int X=0,Xlimit;
 double Fi[Rmax][Xmax];
 
 %}
-%option main
+%option noyywrap
 S [\+\-]?
 N [0-9]+
 %%
 {S}{N}(\.{N})?		{
 	item++;
-	if (item==1) { Rlimit=atoi(yytext); cout << "R limit:" << Rlimit <<"\n"; }
-	if (item==2) { Xlimit=atoi(yytext); cout << "X limit:" << Xlimit <<"\n"; 
-		X=R=0; assert(Rlimit<Rmax); assert(Xlimit<Xmax); }
+	if (item==1) { Rlimit=atoi(yytext); cout << "R limit:\t" << Rlimit <<"\n"; }
+	if (item==2) { Xlimit=atoi(yytext); cout << "X limit:\t" << Xlimit <<"\n"; 
+		X=R=0; assert(Rlimit<Rmax); assert(Xlimit<Xmax);
+	cout << "\nFi[] phield data:"; }
 	if (item>2) { Fi[R][X++] = atof(yytext); }
 	}
 
@@ -28,7 +29,6 @@ N [0-9]+
 		for (int x=0;x<Xlimit;x++) {
 			cout << Fi[r][x] << " ";
 	}}
-	doit();
 	yyterminate();
 }
 
