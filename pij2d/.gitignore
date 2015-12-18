@@ -3,3 +3,4 @@
 *.exe
 *.elf
 *.rar
+lex.yy.c

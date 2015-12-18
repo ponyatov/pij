@@ -1,18 +1,22 @@
 
 #MPICH2 = C:\MinGW\MPICH2
 
+MODULE = pij2d
+
 .PHONY: exec
 exec: Fi.txt
-Fi.txt: ./pij2d$(EXE)
-	./pij2d$(EXE)
+Fi.txt: ./$(MODULE)$(EXE)
+	./$(MODULE)$(EXE) < Fi_original > 
 
-C = cpp.cpp
+C = lex.yy.c # cpp.cpp
 H = hpp.hpp
 CXXFLAGS += -I. -std=gnu++11
 #-I$(MPICH2)/include -L$(MPICH2)/lib
-./pij2d$(EXE): $(C) $(H) Makefile
+./$(MODULE)$(EXE): $(C) $(H)
 	$(CXX) $(CXXFLAGS) -o $@ $(C)
 #	-lmpi
+lex.yy.c: lpp.lpp
+	flex $<
 
 NOW = $(shell date +%Y%m%d%H%M)
 .PHONY: rar
