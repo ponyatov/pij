@@ -22,7 +22,7 @@ double dt = 1E-6; // dt:=1E-6;
 double t=0; // t:=0;
 double z=0; // z:=0;
 double R=0;
-double Z=0,Z0=0;
+double Z0=0;
 
 double Ez,Er;
 
@@ -47,7 +47,7 @@ Ez = (Fi[x][y]-Fi[x][y+1])*8000/0.001;
 Er = -1*(Fi[x][y]-Fi[x+1][y])*8000/0.001;
 
 // Z:=Z+Vz*dt+Ez*qm*dt*dt/2;
-Z =Z+Vz*dt+Ez*Qm*dt*dt/2;
+z =z+Vz*dt+Ez*Qm*dt*dt/2;
 
 // Vz:=Vz+Ez*qm*dt;
 Vz =Vz+Ez*Qm*dt;
