@@ -1,6 +1,9 @@
 #ifndef _H_PIJ2D
 #define _H_PIJ2D
 
+#define Rmax 20+1
+#define Xmax 90+1
+
 //#include <mpi.h>
 
 #include <iostream>

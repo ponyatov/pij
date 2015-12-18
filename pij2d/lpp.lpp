@@ -1,6 +1,38 @@
 %{
 #include "hpp.hpp"
+
+int item=0;
+int R=0,Rlimit;
+int X=0,Xlimit;
+
+double Fi[Rmax][Xmax];
+
 %}
 %option main
+S [\+\-]?
+N [0-9]+
 %%
+{S}{N}(\.{N})?		{
+	item++;
+	if (item==1) { Rlimit=atoi(yytext); cout << "R limit:" << Rlimit <<"\n"; }
+	if (item==2) { Xlimit=atoi(yytext); cout << "X limit:" << Xlimit <<"\n"; 
+		X=R=0; assert(Rlimit<Rmax); assert(Xlimit<Xmax); }
+	if (item>2) Fi[R-1][X-1] = atof(yytext);
+}
+\n+		{ if(item>=2) { 
+		if (R) assert(X==Xlimit+1);				// check every line size = Xlim
+		X=0; 									// zero X coordinate
+		assert ((R++) < Rlimit+2); }}
+[ \t]+	{ if(item>=2) { 
+			assert((X++)<Xlimit+2); // check 
+		} }
+
+<<EOF>> {
+	for (int r=0;r<=Rlimit;r++) {
+		cout << "\n" << r <<": ";
+		for (int x=0;x<=Xlimit;x++) {
+			cout << Fi[r][x] << " ";
+	}}
+	yyterminate();
+}
 %%

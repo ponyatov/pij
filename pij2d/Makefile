@@ -6,7 +6,7 @@ MODULE = pij2d
 .PHONY: exec
 exec: Fi.txt
 Fi.txt: ./$(MODULE)$(EXE)
-	./$(MODULE)$(EXE) < Fi_original > 
+	./$(MODULE)$(EXE) < Fi.txt > $(MODULE).log
 
 C = lex.yy.c # cpp.cpp
 H = hpp.hpp
