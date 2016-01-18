@@ -1,0 +1,7 @@
+*~
+*.swp
+*.aux
+*.log
+*.toc
+*.out
+pij2d.mk

@@ -1,0 +1,71 @@
+\input{../../texheader/ebook}
+\input{../../texheader/colors}
+\input{../../texheader/cyr}
+\input{../../texheader/comp}
+\input{../../texheader/relsec}
+\input{../../texheader/misc}
+
+\title{Инсрукция по запуску расчетного мудля\\на кластере "Сергей Королев"}
+\author{Д.Понятовский \email{dponyatov@gmail.com}}
+\begin{document}
+\maketitle
+\tableofcontents
+
+\secdown
+
+\secly{Установка}
+
+Выполнить в домашнем каталоге\note{в разделяемой между узлами файловой системе}
+
+\begin{verbatim}
+git clone -o github https://github.com/ponyatov/pij.git
+cd pij/pij2d
+make EXE=
+\end{verbatim}
+
+Для сборки под \win\note{для тестирования}:
+
+\begin{verbatim}
+mingw32-make EXE=.exe
+\end{verbatim}
+
+\secly{Алгоритм}
+
+\figx{korolev.png}{height=0.95\textheight}
+
+\secly{Параметры командной строки}
+
+Параметры командной строки\note{см. исходный код функции main()}:
+
+\begin{verbatim}
+./pij[.exe] [V] [Qm] [Alpha] [r]
+\end{verbatim}
+
+\begin{tabular}{l l l}
+	\verb|V| & $V$ & модуль скорости \\
+	\verb|Qm| & $Q_m$ & отношние заряд/масса \\
+	\verb|Alpha| & $\alpha$ & угол влета частицы \\
+	\verb|r| & $r$ & г \\
+\end{tabular}
+
+\secrel{Исходный кот}\secdown
+
+%\lst{}{}{C++}
+
+\secrel{Скрипт сборки}
+
+\lst{Makefile}{pij2d.mk}{make}
+
+\secrel{Лексер: чтение файла потенциалов}
+
+\lst{lpp.lpp}{../pij2d/lpp.lpp}{C++}
+
+\secrel{Расчетный модуль (\cpp)}
+
+\lst{hpp.hpp}{../pij2d/hpp.hpp}{C++}
+
+\lst{cpp.cpp}{../pij2d/cpp.cpp}{C++}
+
+\secup
+
+\end{document}
