@@ -1,0 +1,26 @@
+digraph Algoritm {
+label="\nалгоритм на кластере \"Сергей Королев\"";
+
+phi [label="подготовка файла поля потенциалов",shape=box];
+dat [label="генерация распределения частиц",shape=box];
+pbs [label="генерация файлов заданий .PBS",shape=box];
+run [label="запуск заданий на кластере\n(асинхронный)"];
+"узел 1" [shape=box];
+"узел 2" [shape=box];
+"..." [shape=box];
+"узел N" [shape=box];
+
+send [label="передача выходных файлов данных\nв систему анализа и визуализации",
+shape = polygon, sides = 4, skew= 0.05];
+
+начало ->
+
+phi  -> dat -> pbs -> run ;
+run -> "узел 1" -> send;
+run -> "узел 2" -> send;
+run -> "..." -> send;
+run -> "узел N" -> send;
+
+send->кончало
+}
+
